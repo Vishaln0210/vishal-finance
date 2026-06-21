@@ -1,0 +1,17 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // ⚠️ This app has no authentication — these rules allow open read/write.
+    // This is fine ONLY because the app URL is private/personal and not shared.
+    // If you ever share the link, add Firebase Auth and lock these down to your UID.
+    match /transactions/{document=**} {
+      allow read, write: if true;
+    }
+    match /lent/{document=**} {
+      allow read, write: if true;
+    }
+    match /categories/{document=**} {
+      allow read, write: if true;
+    }
+  }
+}
