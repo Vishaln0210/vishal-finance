@@ -160,23 +160,23 @@ export default function MonthlyPage() {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 md:space-y-6">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">Monthly Comparison</h1>
-          <p className="text-sm text-gray-500">Month-by-month breakdown</p>
+          <h1 className="text-xl md:text-2xl font-bold">Monthly Comparison</h1>
+          <p className="text-xs md:text-sm text-gray-500">Month-by-month breakdown</p>
         </div>
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-2 md:gap-3">
           <button
             onClick={downloadCSV}
-            className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-sm"
+            className="flex items-center gap-1.5 px-3 md:px-4 py-2 text-xs md:text-sm font-medium rounded-lg bg-emerald-600 text-white hover:bg-emerald-700 transition shadow-sm"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3"/></svg>
             CSV
           </button>
           <button
             onClick={downloadPDF}
-            className="flex items-center gap-1.5 px-4 py-2 text-sm font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition shadow-sm"
+            className="flex items-center gap-1.5 px-3 md:px-4 py-2 text-xs md:text-sm font-medium rounded-lg bg-red-600 text-white hover:bg-red-700 transition shadow-sm"
           >
             <svg xmlns="http://www.w3.org/2000/svg" className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}><path strokeLinecap="round" strokeLinejoin="round" d="M4 16v2a2 2 0 002 2h12a2 2 0 002-2v-2M7 10l5 5m0 0l5-5m-5 5V3"/></svg>
             PDF
@@ -189,14 +189,14 @@ export default function MonthlyPage() {
       </div>
 
       {/* Bar chart */}
-      <div className="bg-white rounded-xl p-5 shadow-sm border border-black/5">
-        <h3 className="text-sm font-semibold text-gray-700 mb-4">Income vs Expenses — {year}</h3>
-        <ResponsiveContainer width="100%" height={240}>
-          <BarChart data={monthData} barSize={20}>
-            <XAxis dataKey="month" tick={{ fontSize: 11 }} />
-            <YAxis tick={{ fontSize: 11 }} tickFormatter={v => `₹${(v/1000).toFixed(0)}k`} />
+      <div className="bg-white rounded-xl p-4 md:p-5 shadow-sm border border-black/5">
+        <h3 className="text-xs md:text-sm font-semibold text-gray-700 mb-3 md:mb-4">Income vs Expenses — {year}</h3>
+        <ResponsiveContainer width="100%" height={200}>
+          <BarChart data={monthData} barSize={14}>
+            <XAxis dataKey="month" tick={{ fontSize: 10 }} />
+            <YAxis tick={{ fontSize: 10 }} tickFormatter={v => `₹${(v/1000).toFixed(0)}k`} />
             <Tooltip formatter={(v) => fmt(Number(v))} />
-            <Legend />
+            <Legend wrapperStyle={{ fontSize: 11 }} />
             <Bar dataKey="income" name="Income" fill="#17A589" radius={[4,4,0,0]} />
             <Bar dataKey="expenses" name="Expenses" fill="#C0392B" radius={[4,4,0,0]} />
             <Bar dataKey="net" name="Net" fill="#4472C4" radius={[4,4,0,0]} />
@@ -206,10 +206,11 @@ export default function MonthlyPage() {
 
       {/* Monthly summary table */}
       <div className="bg-white rounded-xl shadow-sm border border-black/5 overflow-auto">
-        <div className="px-5 py-4 border-b">
-          <h3 className="text-sm font-semibold text-gray-700">Monthly Summary</h3>
+        <div className="px-4 md:px-5 py-3 md:py-4 border-b">
+          <h3 className="text-xs md:text-sm font-semibold text-gray-700">Monthly Summary</h3>
         </div>
-        <table className="w-full text-sm">
+        <div className="overflow-x-auto">
+        <table className="w-full text-xs md:text-sm min-w-[600px]">
           <thead>
             <tr className="bg-[#2D4A8A] text-white text-xs">
               <th className="px-4 py-3 text-left">Month</th>
@@ -256,6 +257,7 @@ export default function MonthlyPage() {
             })}
           </tbody>
         </table>
+        </div>
       </div>
 
       {/* Category breakdown table */}

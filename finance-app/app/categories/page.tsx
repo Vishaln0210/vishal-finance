@@ -73,12 +73,12 @@ export default function CategoriesPage() {
 
   return (
     <div className="space-y-6 relative">
-      <div className="flex items-center justify-between">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
         <div>
-          <h1 className="text-2xl font-bold">Categories</h1>
-          <p className="text-sm text-gray-500">Manage your categories & view usage</p>
+          <h1 className="text-xl md:text-2xl font-bold">Categories</h1>
+          <p className="text-xs md:text-sm text-gray-500">Manage your categories & view usage</p>
         </div>
-        <button onClick={() => openAdd("Expense")} className="bg-[#1A1F3A] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#2D4A8A] flex items-center gap-2">
+        <button onClick={() => openAdd("Expense")} className="bg-[#1A1F3A] text-white px-4 py-2 rounded-lg text-sm font-semibold hover:bg-[#2D4A8A] flex items-center justify-center gap-2 w-full sm:w-auto">
           <Plus className="w-4 h-4" /> Add Category
         </button>
       </div>

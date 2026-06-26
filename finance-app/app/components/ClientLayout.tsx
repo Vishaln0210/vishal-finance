@@ -7,7 +7,7 @@ export default function ClientLayout({ children }: { children: React.ReactNode }
     <LockScreen>
       <div className="flex min-h-screen">
         <Sidebar />
-        <main className="flex-1 ml-64 p-6">{children}</main>
+        <main className="flex-1 md:ml-64 p-4 md:p-6 pb-24 md:pb-6">{children}</main>
       </div>
     </LockScreen>
   );
