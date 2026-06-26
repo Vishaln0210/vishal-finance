@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
-import Sidebar from "./components/Sidebar";
+import ClientLayout from "./components/ClientLayout";
 
 export const metadata: Metadata = {
   title: "Vishal's Finance Tracker",
@@ -24,10 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <link rel="apple-touch-icon" href="/favicon.ico" />
       </head>
       <body className="bg-gray-50 text-gray-900 font-sans">
-        <div className="flex min-h-screen">
-          <Sidebar />
-          <main className="flex-1 ml-64 p-6">{children}</main>
-        </div>
+        <ClientLayout>{children}</ClientLayout>
       </body>
     </html>
   );
